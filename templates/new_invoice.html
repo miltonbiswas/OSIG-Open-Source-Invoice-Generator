@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow p-4">
+  <h3 class="mb-4">Create Invoice</h3>
+  <form action="{{ url_for('preview_invoice') }}" method="POST">
+    <div class="row">
+      <div class="col-md-6">
+        <label>Business Name</label>
+        <input type="text" name="business_name" class="form-control" required>
+        <label>Owner Name</label>
+        <input type="text" name="owner_name" class="form-control" required>
+        <label>Bill By</label>
+        <input type="text" name="bill_by" class="form-control" required>
+        <label>Bill Date</label>
+        <input type="date" name="bill_date" class="form-control" required>
+        <label>Payment Method</label>
+        <input type="text" name="payment_method" class="form-control" required>
+        <label>Payer Name</label>
+        <input type="text" name="payer_name" class="form-control" required>
+      </div>
+      <div class="col-md-6">
+        <label>Billed To</label>
+        <input type="text" name="billed_to" class="form-control" required>
+        <label>Description</label>
+        <textarea name="description" class="form-control" rows="3" required></textarea>
+        <label>Rate (₹)</label>
+        <input type="number" step="0.01" name="amount" class="form-control" required>
+        <label>Tax (₹)</label>
+        <input type="number" step="0.01" name="tax" class="form-control" required>
+        <label>Advance Paid (₹)</label>
+        <input type="number" step="0.01" name="advance" class="form-control" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Preview Invoice</button>
+  </form>
+</div>
+{% endblock %}

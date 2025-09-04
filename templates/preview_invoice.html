@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow p-4">
+  <div class="d-flex justify-content-between mb-3">
+    <h2>Invoice</h2>
+    <span class="text-muted">Date: {{ data.bill_date }}</span>
+  </div>
+
+  <div class="mb-3">
+    <strong>From:</strong> {{ data.business_name }}<br>
+    <small>Owner: {{ data.owner_name }}</small><br>
+    <small>Bill By: {{ data.bill_by }}</small>
+  </div>
+
+  <div class="mb-3">
+    <strong>To:</strong> {{ data.billed_to }}
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Rate</th>
+        <th>Tax</th>
+        <th>Advance</th>
+        <th>Total</th>
+        <th>Outstanding</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ data.description }}</td>
+        <td>₹{{ data.amount }}</td>
+        <td>₹{{ data.tax }}</td>
+        <td>₹{{ data.advance }}</td>
+        <td><strong>₹{{ total }}</strong></td>
+        <td><strong>₹{{ outstanding }}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mt-3">
+    <strong>Payment Method:</strong> {{ data.payment_method }}<br>
+    <strong>Payer Name:</strong> {{ data.payer_name }}
+  </div>
+
+  <div class="mt-4 no-print d-flex gap-2">
+    <button onclick="window.print()" class="btn btn-outline-primary">🖨️ Print</button>
+    <form action="{{ url_for('save_invoice') }}" method="POST">
+      {% for key, value in data.items() %}
+        <input type="hidden" name="{{ key }}" value="{{ value }}">
+      {% endfor %}
+      <button type="submit" class="btn btn-success">💾 Save</button>
+    </form>
+  </div>
+
+  <p class="mt-4 text-muted"><em>This invoice is computer-generated and does not require a signature.</em></p>
+</div>
+{% endblock %}
