@@ -102,6 +102,8 @@ python app.py
   ## 📬 Contact
 I'm always open to collaborating on projects or just having a chat!  
 
+![Business Card of mine](/card.png "Milton Biswas")
+
 Designed and Developed by **Milton Biswas**  
 📍 Abu Road, Rajasthan, India  
 📧 Email: miltonbiswasdev@gmail.com  
